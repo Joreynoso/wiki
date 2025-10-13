@@ -1,17 +1,16 @@
 # 🧩 Lista de objetos con componentes y parámetros en React / Next.js
 
-/*
-META: Ejemplo básico de cómo pasar un parámetro desde una página (CategoryPage)
-hacia un componente de lista (ModelsGrid), que a su vez renderiza un componente hijo (ModelCard).
-*/
+> Ejemplo básico de cómo pasar un parámetro desde una página (CategoryPage) hacia un componente de lista (ModelsGrid), que a su vez renderiza un componente hijo (ModelCard).
 
 ---
 
 ## 📦 Estructura general
 
+``` txt
 CategoryPage (recibe params)
 └── ModelsGrid (recibe title y models)
-└── ModelCard (recibe model individual)
+    └── ModelCard (recibe model individual)
+```
 
 ---
 
@@ -34,11 +33,13 @@ export default function ModelsGrid({ title, models }: ModelsGridProps) {
     </div>
   )
 }
+```
 
 ---
 
-## 📄 2. Página CategoryPage 
+## 📄 2. Página `CategoryPage`
 
+```tsx
 import ModelsGrid from "@/app/components/ModelsGrid"
 import { getCategoryBySlug } from "@/app/lib/categories"
 import { getModels } from "@/app/lib/models"
@@ -59,11 +60,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     />
   )
 }
+```
 
---- 
+---
 
 ## 🧠 Concepto clave
 
-Un parámetro dinámico (por ejemplo, el categoryName en la ruta /category/[categoryName])
-se usa para filtrar datos y pasarlos como props hacia componentes de presentación. 
-
+Un parámetro dinámico (por ejemplo, el `categoryName` en la ruta `/category/[categoryName]`) se usa para filtrar datos y pasarlos como props hacia componentes de presentación.

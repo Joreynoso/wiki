@@ -1,14 +1,6 @@
 # ⚡ Next.js App Router: Loading, NotFound y Error
 
-/*
-META: Explicar cómo manejar los estados comunes de una página en Next.js:
-
-- `loading` (mientras se cargan datos)
-- `not-found` (cuando no se encuentra contenido)
-- `error` (cuando ocurre un error inesperado)
-- Ejemplos claros, simples y sin estilos.
-
-*/
+> Explicar cómo manejar los estados comunes de una página en Next.js: `loading`, `not-found` y `error`.
 
 ---
 
@@ -19,20 +11,22 @@ META: Explicar cómo manejar los estados comunes de una página en Next.js:
 export default function Loading() {
   return <p>Cargando...</p>
 }
+```
 
 ---
 
 ## 2️⃣ NotFound (componente de página no encontrada)
 
+```tsx
 // app/not-found.tsx
-import { notFound } from 'next/navigation'
-
 export default function NotFoundPage() {
-  // También se puede llamar manualmente
-  // notFound() // para redirigir a la página 404 desde un page.tsx
   return <p>Página no encontrada</p>
 }
+```
 
+### Uso manual desde un page
+
+```tsx
 // app/products/[id]/page.tsx
 import { notFound } from 'next/navigation'
 
@@ -44,11 +38,13 @@ export default async function ProductPage({ params }: { params: { id: string }})
 
   return <p>Producto: {product.name}</p>
 }
+```
 
 ---
 
 ## 3️⃣ Error (componente de error)
 
+```tsx
 // app/error.tsx
 'use client'
 
@@ -66,5 +62,4 @@ export default function Error({ error, reset }: { error: Error, reset: () => voi
     </div>
   )
 }
-
---- 
+```
