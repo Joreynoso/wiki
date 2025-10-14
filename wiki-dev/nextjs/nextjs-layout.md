@@ -1,21 +1,19 @@
 # 🧩 NEXTJS - Layout específico para una ruta secundaria
 
-/*
-META: Crear un layout que afecte solo a una subruta (ej. /dashboard) sin afectar el layout principal de la app.
-1️⃣ Definir un archivo `layout.tsx` dentro de la carpeta de la ruta secundaria.
-2️⃣ Incluir navegación o menú lateral propio del dashboard.
-3️⃣ Renderizar las páginas hijas usando `{children}`.
-4️⃣ Mantener separado del layout principal para modularidad y reuso.
-*/
+> Crear un layout que afecte solo a una subruta (ej. `/dashboard`) sin afectar el layout principal de la app.
+
+---
 
 ## 📁 Estructura del proyecto
 
+```md
 app/
-├─ layout.tsx // Layout global de la app
-├─ page.tsx // Página principal
-└─ dashboard/
-├─ layout.tsx // Layout específico del dashboard
-└─ page.tsx // Página del dashboard
+├── layout.tsx          // Layout global de la app
+├── page.tsx            // Página principal
+└── dashboard/
+    ├── layout.tsx      // Layout específico del dashboard
+    └── page.tsx        // Página del dashboard
+```
 
 ---
 
@@ -43,9 +41,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     </section>
   )
 }
+```
 
+---
+
+## 📄 `app/dashboard/page.tsx`
+
+```tsx
 // Página principal del dashboard
 // Se renderiza dentro del layout de dashboard
 export default function DashboardPage() {
   return <h2>Bienvenido al panel</h2>
 }
+```
