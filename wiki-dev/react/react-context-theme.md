@@ -1,12 +1,6 @@
 # 🌗 Theme Context - Dark / Light Mode con React y TailwindCSS
 
-/*
-Explicación: Este ejemplo muestra cómo crear un contexto global para manejar tema oscuro/claro en una app React usando TailwindCSS.  
-
-- Permite cambiar el tema dinámicamente.  
-- Persiste la preferencia en localStorage.  
-- Integra TailwindCSS dark mode para transiciones suaves de color.
-*/
+> Cómo crear un contexto global para manejar tema oscuro/claro en una app React usando TailwindCSS, con persistencia en localStorage.
 
 ---
 
@@ -43,11 +37,13 @@ export default function ThemeProvider({ children }) {
     </ThemeContext.Provider>
   )
 }
+```
 
 ---
 
-## 2️⃣ Uso del ThemeContext en un componente
+## 2️⃣ Uso del `ThemeContext` en un componente
 
+```jsx
 import { useContext } from "react"
 import { ThemeContext } from "./ThemeProvider"
 
@@ -60,20 +56,25 @@ export function ThemeSwitcher() {
     </button>
   )
 }
+```
 
 ---
 
 ## 3️⃣ TailwindCSS - Configuración dark mode
 
+```css
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+```
 
 ---
 
 ## 4️⃣ Ejemplo de uso en JSX con Tailwind
 
+```jsx
 <div className="bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300 p-4">
   <h1>Hola Mundo</h1>
   <ThemeSwitcher />
 </div>
+```

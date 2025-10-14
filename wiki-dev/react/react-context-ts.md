@@ -1,13 +1,10 @@
 # 🧩 React Context simple con custom hook
 
-/*
+> Crear un contexto simple que maneje un estado global y un custom hook que lo consuma.
 
--- META: Crear un contexto simple que maneje un estado global y un custom hook que lo consuma.
--- Incluye un componente de ejemplo que usa el contexto.
+---
 
-*/
-
-## 📁 Contexto
+## 📄 Código del contexto
 
 ```tsx
 import { createContext, useContext, useState, ReactNode } from 'react'
@@ -41,3 +38,24 @@ export const useCounter = () => {
   if (!context) throw new Error('useCounter debe usarse dentro de CounterProvider')
   return context
 }
+```
+
+---
+
+## 📄 Uso del custom hook
+
+```tsx
+import { useCounter } from './CounterContext'
+
+export function Counter() {
+  const { count, increment, decrement } = useCounter()
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </div>
+  )
+}
+```

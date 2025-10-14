@@ -1,14 +1,6 @@
 # 🌀 Animaciones con Framer Motion en React/Next
 
-/*
-
-META: Mostrar cómo agregar animaciones simples y limpias con Framer Motion.
-
-- Animaciones de entrada y salida.
-- Animaciones al hacer hover.
-- Ejemplos mínimos y fáciles de copiar.
-
-*/
+> Cómo agregar animaciones simples y limpias con Framer Motion: entrada, salida, hover y listas.
 
 ---
 
@@ -18,13 +10,13 @@ META: Mostrar cómo agregar animaciones simples y limpias con Framer Motion.
 npm install framer-motion
 # o
 yarn add framer-motion
+```
 
+---
 
-// -----------------------------------------------------------------
-// -----------------------------------------------------------------
+## 2️⃣ Animación básica de entrada (fade + slide)
 
-2️⃣ Animación básica de entrada (fade + slide)
-
+```tsx
 import { motion } from 'framer-motion'
 
 export const Box = () => {
@@ -38,12 +30,13 @@ export const Box = () => {
     </motion.div>
   )
 }
+```
 
-// -----------------------------------------------------------------
-// -----------------------------------------------------------------
+---
 
-3️⃣ Animación al hacer hover
+## 3️⃣ Animación al hacer hover
 
+```tsx
 import { motion } from 'framer-motion'
 
 export const HoverButton = () => {
@@ -56,12 +49,13 @@ export const HoverButton = () => {
     </motion.button>
   )
 }
+```
 
-// -----------------------------------------------------------------
-// -----------------------------------------------------------------
+---
 
-5️⃣ Animar listas con AnimatePresence
+## 4️⃣ Animar listas con `AnimatePresence`
 
+```tsx
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
@@ -88,6 +82,4 @@ export const TodoList = () => {
     </div>
   )
 }
-
-// -----------------------------------------------------------------
-// -----------------------------------------------------------------
+```

@@ -1,12 +1,6 @@
 # 🔍 Uso de `searchParams` en Next.js 14+
 
----
-
-## 🎯 Objetivo
-
-En este ejemplo mostramos cómo usar **`searchParams`** para
-**leer parámetros de búsqueda (query params)** directamente en un **Server Component**
-y filtrar datos según el texto ingresado en un formulario.
+> Cómo usar `searchParams` para leer parámetros de búsqueda (query params) directamente en un Server Component y filtrar datos según el texto ingresado en un formulario.
 
 ---
 
@@ -67,29 +61,27 @@ export default async function Home({ searchParams }) {
     </div>
   )
 }
+```
 
 ---
 
-## 💡 Concepto clave: searchParams
+## 💡 Concepto clave: `searchParams`
 
-En Next.js (App Router), cada Server Component de una ruta recibe automáticamente un 
-objeto searchParams cuando la URL contiene query strings.
+En Next.js (App Router), cada Server Component de una ruta recibe automáticamente un objeto `searchParams` cuando la URL contiene query strings.
+
 Por ejemplo:
 
-/?query=cat --> se recibe como { query: "cat" }
+```md
+/?query=cat  →  se recibe como { query: "cat" }
+```
 
-----
+Los formularios HTML envían datos por método GET por defecto, lo que significa que el navegador recarga la página con los parámetros en la URL.
 
-## 👉 Los formularios HTML envían datos por método GET por defecto, lo que significa que el 
-navegador recarga la página con los parámetros en la URL:
-
-----
+---
 
 ## ✅ Conclusión
 
-searchParams permite leer fácilmente los query params en Server Components.
-Ideal para búsquedas, filtros o paginación sin estados locales.
-Los formularios HTML funcionan de forma nativa sin JavaScript adicional.
-Para control dinámico en el cliente, usá useSearchParams o useRouter
-
----
+- `searchParams` permite leer fácilmente los query params en Server Components
+- Ideal para búsquedas, filtros o paginación sin estados locales
+- Los formularios HTML funcionan de forma nativa sin JavaScript adicional
+- Para control dinámico en el cliente, usá `useSearchParams` o `useRouter`

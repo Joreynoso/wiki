@@ -1,12 +1,6 @@
 # ⚡ Custom Hooks en React
 
-/*
-META: Explicar cómo crear y usar custom hooks en React.
-
-- Ejemplos simples para incrementar contadores o manejar inputs.
-- Con y sin TypeScript.
-
-*/
+> Cómo crear y usar custom hooks en React con ejemplos simples y prácticos.
 
 ---
 
@@ -25,8 +19,11 @@ export function useCounter(initialValue = 0) {
 
   return { count, increment, decrement, reset }
 }
+```
 
-// Uso en un componente
+### Uso en un componentee
+
+```jsx
 export function CounterComponent() {
   const { count, increment, decrement, reset } = useCounter(5)
 
@@ -39,11 +36,13 @@ export function CounterComponent() {
     </div>
   )
 }
+```
 
 ---
 
 ## 2️⃣ Custom Hook simple con TypeScript
 
+```tsx
 import { useState } from 'react'
 
 // Hook para manejar un contador con tipado
@@ -56,8 +55,11 @@ export function useCounterTS(initialValue: number = 0) {
 
   return { count, increment, decrement, reset }
 }
+```
 
-// Uso en un componente
+### Uso en un componente
+
+```tsx
 export const CounterComponentTS = () => {
   const { count, increment, decrement, reset } = useCounterTS(10)
 
@@ -70,3 +72,4 @@ export const CounterComponentTS = () => {
     </div>
   )
 }
+```

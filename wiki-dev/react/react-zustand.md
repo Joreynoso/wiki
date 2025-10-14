@@ -1,29 +1,27 @@
 # 🟢 Zustand en React
 
-/*
-META: Explicar cómo usar Zustand para manejo de estado global.
-
-- Ejemplo simple de un contador.
-- Versiones con y sin TypeScript.
-
-*/
+> Cómo usar Zustand para manejo de estado global con ejemplos simples de un contador.
 
 ---
 
 ## 1️⃣ Zustand sin TypeScript
 
+### Crear store
+
 ```jsx
 import create from 'zustand'
 
-// 1️⃣ Crear store
 export const useStore = create(set => ({
   count: 0,
   increment: () => set(state => ({ count: state.count + 1 })),
   decrement: () => set(state => ({ count: state.count - 1 })),
   reset: () => set({ count: 0 })
 }))
+```
 
-// 2️⃣ Uso en un componente
+### Uso en un componente
+
+```jsx
 export const CounterComponent = () => {
   const { count, increment, decrement, reset } = useStore()
   
@@ -36,14 +34,18 @@ export const CounterComponent = () => {
     </div>
   )
 }
+```
 
 ---
 
 ## 2️⃣ Zustand con TypeScript
 
+### Definir tipos y crear store
+
+```tsx
 import create from 'zustand'
 
-// 1️⃣ Definir tipos del store
+// Definir tipos del store
 interface CounterStore {
   count: number
   increment: () => void
@@ -51,15 +53,18 @@ interface CounterStore {
   reset: () => void
 }
 
-// 2️⃣ Crear store con tipado
+// Crear store con tipado
 export const useStoreTS = create<CounterStore>((set) => ({
   count: 0,
   increment: () => set(state => ({ count: state.count + 1 })),
   decrement: () => set(state => ({ count: state.count - 1 })),
   reset: () => set({ count: 0 })
 }))
+```
 
-// 3️⃣ Uso en un componente
+### Uso en un componente, CounterComponent
+
+```tsx
 export const CounterComponentTS = () => {
   const { count, increment, decrement, reset } = useStoreTS()
 
@@ -72,4 +77,4 @@ export const CounterComponentTS = () => {
     </div>
   )
 }
-
+```

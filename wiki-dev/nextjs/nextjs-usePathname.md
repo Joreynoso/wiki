@@ -1,14 +1,10 @@
 # 🧭 Navbar simple con Next.js `usePathname` - Links explícitos
 
-/*
-META: Crear una Navbar mínima con enlaces escritos a mano y resaltar el activo usando `usePathname`.
+> Crear una Navbar mínima con enlaces escritos a mano y resaltar el activo usando `usePathname`.
 
-- Componente cliente necesario ("use client").
-- Console.log para inspeccionar pathname.
+---
 
-*/
-
-## 📄 Código del componente
+## 📄 Código del componente `Navbar`
 
 ```tsx
 "use client"
@@ -52,11 +48,13 @@ export default function Navbar() {
     </header>
   )
 }
+```
 
 ---
 
-## Ejemplo de componente NavLink 
+## 📄 Código del componente `NavLink`
 
+```tsx
 "use client"
 
 import Link from "next/link"
@@ -73,23 +71,15 @@ export default function NavLink({ href, children, isActive }: NavLinkProps) {
     </li>
   )
 }
+```
 
-children permite tener <NavLink>Children va Aqui</NavLink>
-
+**Nota:** `children` permite tener `<NavLink>Children va Aquí</NavLink>`
 
 ---
-/*
 
-🧠 Explicación breve
+## 🧠 Explicación breve
 
-usePathname() devuelve el pathname actual (p. ej. /, /about, /notes/123) y solo funciona en componentes cliente.
-Hacemos console.log("pathname:", pathname) para comprobar exactamente qué valor llega y ajustar la lógica de 
-comparación si usás slugs o rutas anidadas.
-
-Aquí se usa una comparación exacta (pathname === link.href). Si necesitás marcar rutas anidadas 
-(por ejemplo /notes/123 → activo /notes), reemplazá la comparación por pathname.startsWith(link.href) 
-para abarcar subrutas.
-
-El componente es mínimo y se puede colocar en app/layout.tsx para que aparezca en todas las páginas.
-
-*/
+- `usePathname()` devuelve el pathname actual (p. ej. `/`, `/about`, `/notes/123`) y solo funciona en componentes cliente
+- Hacemos `console.log("pathname:", pathname)` para comprobar exactamente qué valor llega y ajustar la lógica de comparación si usás slugs o rutas anidadas
+- Aquí se usa una comparación exacta (`pathname === link.href`). Si necesitás marcar rutas anidadas (por ejemplo `/notes/123` → activo `/notes`), reemplazá la comparación por `pathname.startsWith(link.href)` para abarcar subrutas
+- El componente es mínimo y se puede colocar en `app/layout.tsx` para que aparezca en todas las páginas

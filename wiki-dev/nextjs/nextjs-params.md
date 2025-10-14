@@ -1,28 +1,25 @@
 # 🧩 NEXTJS - Carpetas dinámicas y uso de `params`
 
-/*
-META: Crear un flujo completo para manejar rutas dinámicas en Next.js:
-1️⃣ Crear un layout raíz (`layout.tsx`) que incluya la Navbar.
-2️⃣ Crear un componente cliente de Navbar con enlaces hacia rutas dinámicas.
-3️⃣ Crear carpetas dinámicas con corchetes `[param]` para recibir parámetros desde la URL.
-4️⃣ En el componente de la ruta dinámica, usar `params` para mostrar datos según la URL.
-5️⃣ Explicar cómo navegar y acceder a los parámetros dinámicos sin estilos ni frameworks externos.
-*/
+> Crear un flujo completo para manejar rutas dinámicas en Next.js usando carpetas con corchetes `[param]` y accediendo a los parámetros desde la URL.
 
-## 📄 Estructura del proyecto
+---
 
+## 📁 Estructura del proyecto
+
+```md
 app/
-├─ layout.tsx
-├─ components/
-│ └─ Navbar.tsx
-├─ category/
-│ ├─ [categoryModel]/
-│ │ └─ page.tsx
-└─ page.tsx
+├── layout.tsx
+├── page.tsx
+├── components/
+│   └── Navbar.tsx
+└── category/
+    └── [categoryModel]/
+        └── page.tsx
+```
 
-## 📄 Código principal
+---
 
-### 🧱 `app/components/Navbar.tsx`
+## 📄 `app/components/Navbar.tsx`
 
 ```tsx
 "use client" // Componente cliente para manejar enlaces y eventos de usuario
@@ -39,11 +36,13 @@ export default function Navbar() {
     </nav>
   )
 }
+```
 
-// -----------------------------------------------------------------
-// -----------------------------------------------------------------
+---
 
+## 📄 `app/layout.tsx`
 
+```tsx
 // Layout raíz que envuelve todas las páginas
 import Navbar from "./components/Navbar"
 
@@ -59,10 +58,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+```
 
-// -----------------------------------------------------------------
-// -----------------------------------------------------------------
+---
 
+## 📄 `app/category/[categoryModel]/page.tsx`
+
+```tsx
 // Página dinámica: el nombre entre [] crea la ruta dinámica
 // Ejemplo: /category/work -> params.categoryModel = "work"
 export default function CategoryPage({ params }: { params: { categoryModel: string } }) {
@@ -74,4 +76,4 @@ export default function CategoryPage({ params }: { params: { categoryModel: stri
     </section>
   )
 }
-
+```

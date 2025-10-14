@@ -1,29 +1,26 @@
 # 🧩 API Node.js + Mongoose - Paginación y filtros múltiples
 
-/*
-META: Crear un endpoint que devuelva una lista de juegos con:
-1️⃣ Paginación (`page` y `limit`).
-2️⃣ Filtros dinámicos (`genre`, `platform`).
-3️⃣ Búsqueda por nombre (`q`).
-4️⃣ Ordenamiento (`sort`).
-5️⃣ Respuesta con información completa: página actual, total, totalPages, cantidad y datos.
-*/
-
-## 📁 Estructura sugerida
-
-src/
-├─ repositories/
-│ └─ GameRepository.js
-├─ services/
-│ └─ GameService.js
-├─ controllers/
-│ └─ GameController.js
-└─ models/
-└─ VideoGame.js
+> Crear un endpoint que devuelva una lista de juegos con paginación, filtros dinámicos, búsqueda por nombre y ordenamiento.
 
 ---
 
-## 🧱 `repositories/GameRepository.js`
+## 📁 Estructura sugerida
+
+```md
+src/
+├── repositories/
+│   └── GameRepository.js
+├── services/
+│   └── GameService.js
+├── controllers/
+│   └── GameController.js
+└── models/
+    └── VideoGame.js
+```
+
+---
+
+## 📄 `repositories/GameRepository.js`
 
 ```js
 // Repositorio que interactúa directamente con la base de datos
@@ -42,7 +39,13 @@ export default class GameRepository {
     return { games, total }
   }
 }
+```
 
+---
+
+## 📄 `services/GameService.js`
+
+```js
 // Lógica de negocio: preparar filtros y opciones de sorteo
 import GameRepository from '@/repositories/GameRepository'
 
@@ -67,7 +70,13 @@ export default class GameService {
     return GameRepository.getAll({ filter, sortOption, skip, limit })
   }
 }
+```
 
+---
+
+## 📄 `controllers/GameController.js`
+
+```js
 // Controlador de la API: recibe req/res y responde al cliente
 import GameService from '@/services/GameService'
 
@@ -108,3 +117,14 @@ export default class GameController {
     }
   }
 }
+```
+
+---
+
+## 🎯 Características implementadas
+
+- ✅ **Paginación**: `page` y `limit`
+- ✅ **Filtros dinámicos**: `genre`, `platform`
+- ✅ **Búsqueda**: `q` (búsqueda por nombre)
+- ✅ **Ordenamiento**: `sort` (asc/desc)
+- ✅ **Respuesta completa**: página actual, total, totalPages, cantidad y datos

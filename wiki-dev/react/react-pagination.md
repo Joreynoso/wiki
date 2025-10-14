@@ -1,29 +1,24 @@
 # 🧩 REACT + AXIOS - Paginación, filtros múltiples y ordenamiento
 
-/*
-META: Crear un flujo completo para manejar una lista de datos paginada con filtros dinámicos.
-1️⃣ Crear un contexto global (GameContext) para centralizar el estado de datos, filtros y paginación.
-2️⃣ Implementar funciones para obtener datos filtrados desde un endpoint (usando axios).
-3️⃣ Crear una página (`GamesPage`) que use el contexto para mostrar, buscar y paginar.
-4️⃣ Agregar debounce en la búsqueda para optimizar llamadas a la API.
-5️⃣ Mostrar un flujo limpio de manejo de estados: loading, error y resultados.
-*/
+> Crear un flujo completo para manejar una lista de datos paginada con filtros dinámicos usando Context API y axios.
 
 ---
 
 ## 📁 Estructura del proyecto
 
+```md
 src/
-├─ context/
-│ └─ gamesContext.jsx
-├─ pages/
-│ └─ GamesPage.jsx
-└─ api/
-└─ games.js // (opcional si usas una API local o endpoint externo)
+├── context/
+│   └── gamesContext.jsx
+├── pages/
+│   └── GamesPage.jsx
+└── api/
+    └── games.js
+```
 
 ---
 
-## 🧱 `context/gamesContext.jsx`
+## 📄 `context/gamesContext.jsx`
 
 ```jsx
 import { useState, createContext, useContext, useEffect } from 'react'
@@ -140,11 +135,15 @@ export const GameProvider = ({ children }) => {
   )
 }
 
-## 🧱 pages/GamesPage.jsxjsx
-
 // Custom Hook para usar el contexto
 export const useGame = () => useContext(GameContext)
+```
 
+---
+
+## 📄 `pages/GamesPage.jsx`
+
+```jsx
 import { useState, useEffect } from 'react'
 import { useGame } from '../context/gamesContext'
 
@@ -244,3 +243,14 @@ export default function GamesPage() {
     </div>
   )
 }
+```
+
+---
+
+## 🎯 Características implementadas
+
+- ✅ **Context API**: Estado global centralizado
+- ✅ **Paginación**: Control de páginas con límites
+- ✅ **Filtros dinámicos**: Género, plataforma y ordenamiento
+- ✅ **Búsqueda con debounce**: Optimiza llamadas a la API
+- ✅ **Manejo de estados**: Loading, error y resultados vacíos

@@ -1,14 +1,6 @@
 # 🔹 Render Props y Children en React
 
-/*
-
-META: Mostrar cómo usar Render Props y el prop children en React.
-
-- Render Props: pasar una función para renderizar contenido dinámico.
-- Children: pasar JSX dentro de un componente padre.
-- Ejemplos simples para comprender su funcionamiento.
-
-*/
+> Cómo usar Render Props y el prop children en React para renderizar contenido dinámico.
 
 ---
 
@@ -23,8 +15,11 @@ export const Card = ({ children }: { children: React.ReactNode }) => {
     </div>
   )
 }
+```
 
-// Uso
+### App
+
+```tsx
 export const App = () => {
   return (
     <Card>
@@ -33,11 +28,13 @@ export const App = () => {
     </Card>
   )
 }
+```
 
 ---
 
 ## 2️⃣ Render Props
 
+```tsx
 // Componente que recibe una función como prop
 interface MouseProps {
   render: (x: number, y: number) => React.ReactNode
@@ -52,18 +49,23 @@ export const MouseTracker = ({ render }: MouseProps) => {
 
   return <div onMouseMove={handleMouseMove}>{render(coords.x, coords.y)}</div>
 }
+```
 
-// Uso
+### Ejemplo
+
+```tsx
 export const App = () => {
   return (
     <MouseTracker render={(x, y) => <p>Posición del mouse: {x}, {y}</p>} />
   )
 }
+```
 
 ---
 
-3️⃣ Children como función (funcional render prop)
+## 3️⃣ Children como función (funcional render prop)
 
+```tsx
 interface CounterProps {
   children: (count: number, increment: () => void) => React.ReactNode
 }
@@ -73,8 +75,11 @@ export const Counter = ({ children }: CounterProps) => {
   const increment = () => setCount(c => c + 1)
   return <div>{children(count, increment)}</div>
 }
+```
 
-// Uso
+### Usoss
+
+```tsx
 export const App = () => {
   return (
     <Counter>
@@ -87,4 +92,4 @@ export const App = () => {
     </Counter>
   )
 }
-
+```
