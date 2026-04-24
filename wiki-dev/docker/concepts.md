@@ -126,3 +126,9 @@ exit
 ```
 Al escribir `exit`, tu contenedor se detendrá. Como no configuraste un Volumen de persistencia para guardar esa carpeta `tutorial_basico`, toda esa información se perdió. Esta es la regla de oro: **Lo que pasa en el contenedor, se destruye con el contenedor.**
 
+## Docker run vs docker pull
+
+- **`docker pull`**: Descarga una imagen desde un registro (como Docker Hub) a tu entorno local. **No ejecuta ningún contenedor**.
+- **`docker run`**: Crea un contenedor nuevo a partir de una imagen y **lo ejecuta**. Si la imagen no se encuentra en tu entorno local, `docker run` realiza automáticamente un `docker pull` para descargarla antes de iniciar el contenedor.
+
+En resumen: `pull` solo descarga la plantilla, mientras que `run` descarga (si es necesario), crea la instancia y la pone en marcha.
