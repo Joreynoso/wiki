@@ -59,6 +59,43 @@ Beneficios clave:
 | **Reproducibilidad** | Baja (depende del historial) | Alta (archivo YAML) |
 | **Escenario ideal** | Pruebas rápidas (1 servicio) | Entornos completos (app + base de datos) |
 
+# Anatomia de un archivo docker-compose.yml
+
+```yaml
+version: '3.9'
+
+services:
+  web:
+    image: python:3.10-slim
+    ports:
+      - '8080:80'
+    volumes:
+      - ./app:/app
+```
+
+* **`version`**: Versión de la sintaxis.
+* **`services`**: Define los contenedores (ej. web, db).
+* **`image`**: Imagen base a utilizar.
+* **`ports`**: Mapeo de red: Puerto Host -> Puerto Contenedor.
+* **`volumes`**: Persistencia: Sincronización en tiempo real.
+
+## Comandos básicos de compose
+
+Nota importante: en versiones modernas (20.10+) de docker, ya no es necesario usar el prefijo 'docker' antes de 'compose', se puede usar directamente 'docker compose' o 'compose'.
+
+1. docker compose up: Levanta todos los servicios definidos en el archivo docker-compose.yml (detached mode por defecto)
+2. docker compose down: Detiene todos los servicios definidos en el archivo docker-compose.yml
+3. docker compose ps: Lista todos los servicios definidos en el archivo docker-compose.yml
 
 
+## Síntesis: El ciclo de vida de la orquestación moderna
 
+**De Local a Global:**
+
+1. **Escribir**: Código local y Dockerfile.
+2. **Construir**: `docker build` (Crear imagen inmutable).
+3. **Distribuir**: `docker push` a Docker Hub (Compartir con el mundo).
+4. **Orquestar**: `docker-compose.yml` (Definir arquitectura multi-servicio).
+5. **Ejecutar**: `docker compose up` (Desplegar en cualquier entorno).
+
+> "El conocimiento de Linux te dio el control. Docker te dio el aislamiento. Compose y Hub te dan el poder de escalar y compartir en cualquier lugar."
